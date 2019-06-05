@@ -5,7 +5,6 @@ var app = express();
 
 // --> 7)  Mount the Logger middleware here
 
-
 // --> 11)  Mount the body-parser middleware  here
 
 
@@ -27,12 +26,16 @@ app.get("/", (req, res) => {
 app.use(express.static(__dirname + "/public"));
 
 /** 5) serve JSON on a specific route */
-app.get("/json", (req, res) => {
-  res.json({"message": "Hello json"});
-});
+app.get("/json", function(req, res) {
+  let message = {"message": "Hello json"}
+        if(process.env.MESSAGE_STYLE == "uppercase") {
+          message.message = message.message.toUpperCase()
+           res.json(message); }
+          else res.json(message) 
+         });
 
 /** 6) Use the .env file to configure the app */
- 
+
  
 /** 7) Root-level Middleware - A logger */
 //  place it before all the routes !
