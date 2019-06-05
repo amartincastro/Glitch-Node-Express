@@ -46,7 +46,13 @@ app.get("/json", function(req, res) {
 
 
 /** 8) Chaining middleware. A Time server */
-app.get()
+app.get("/now", function(req, res, next) {
+  req.string = "string";
+  next();
+},
+  function (req, res) {
+  res.send(req.string);
+});
 
 /** 9)  Get input from client - Route parameters */
 
