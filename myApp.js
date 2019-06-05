@@ -4,7 +4,11 @@ var express = require('express');
 var app = express();
 
 // --> 7)  Mount the Logger middleware here
-
+app.use(function middleware(req, res, next) {
+  var string = req.method + ' ' + req.path + ' - ' + req.ip;
+  console.log(string);
+  next();
+});
 // --> 11)  Mount the body-parser middleware  here
 
 
@@ -42,7 +46,7 @@ app.get("/json", function(req, res) {
 
 
 /** 8) Chaining middleware. A Time server */
-
+app.get()
 
 /** 9)  Get input from client - Route parameters */
 
