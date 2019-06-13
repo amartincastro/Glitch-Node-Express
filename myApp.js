@@ -66,7 +66,10 @@ app.get("/:word/echo", function(req, res) {
 /** 10) Get input from client - Query parameters */
 // /name?first=<firstname>&last=<lastname>
 app.get("/name", (req, res) => {
-  res.json("{name: 'firstname lastname'}");
+   var first = req.query.first;
+   var last = req.query.last;
+   let jsonObj = { name: `${first} ${last}` };
+  res.send(jsonObj);
 });
 
   
