@@ -2,8 +2,10 @@ console.log("Hello World");
 
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
 
 // --> 7)  Mount the Logger middleware here
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(function middleware(req, res, next) {
   var string = req.method + ' ' + req.path + ' - ' + req.ip;
   console.log(string);
